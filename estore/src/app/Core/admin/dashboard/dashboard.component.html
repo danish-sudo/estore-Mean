@@ -1,0 +1,133 @@
+
+<!-- cards -->
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row pt-md-5 mt-md-3 mb-5">
+          <div class="col-xl-3 col-sm-6 p-2">
+            <div class="card card-common">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <i class="fas fa-shopping-cart fa-3x text-warning"></i>
+                  <div class="text-right text-secondary">
+                    <h5>Products</h5>
+                    <h3>{{len}}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-secondary">
+                <i class="fas fa-sync mr-3"></i>
+                <span>Updated Now</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 p-2">
+            <div class="card card-common">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <i class="fas fa-money-bill-alt fa-3x text-success"></i>
+                  <div class="text-right text-secondary">
+                    <h5>Orders</h5>
+                    <h3>{{olen}}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-secondary">
+                <i class="fas fa-sync mr-3"></i>
+                <span>Updated Now</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 p-2">
+            <div class="card card-common">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <i class="fas fa-user-circle fa-3x text-danger"></i>
+                  <div class="text-right text-secondary">
+                    <h5>Users</h5>
+                    <h3>{{ousers}}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-secondary">
+                <i class="fas fa-sync mr-3"></i>
+                <span>Updated Now</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end of cards -->
+
+<!-- tables -->
+<section>
+  <div class="container-fluid">
+    <div class="row mb-5">
+      <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row align-items-center">
+          <div class="col-xl-6 col-12 mb-4 mb-xl-0">
+            <h3 class="text-muted text-center mb-3">Products</h3>
+            <table class="table table-striped bg-light text-center">
+              <thead>
+              <tr class="text-muted">
+                <th>#</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Date Added</th>
+                <th>In Stock</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let product of prod">
+                <th>{{product.Code}}</th>
+                <td>{{product.ProductName}}</td>
+                <td>PKR {{product.ProductPrice}}</td>
+                <td>{{product.DateAdded}}</td>
+                <td><button type="button" class="btn btn-info btn-sm" *ngIf="product.ProductQuantity>0">In Stock</button>
+                  <button type="button" class="btn btn-danger btn-sm" *ngIf="product.ProductQuantity<0">Out Of Stock</button>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+            <button routerLink="/admin/products" type="button" class="btn btn-danger ml-2">View All</button>
+          </div>
+          <div class="col-xl-6 col-12">
+            <h3 class="text-muted text-center mb-3">Recent Orders</h3>
+            <table class="table table-dark table-hover text-center">
+              <thead>
+              <tr  class="text-muted">
+                <th>#</th>
+                <th>Customer Name</th>
+                <th>Total Price</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let order of or">
+                <th>{{order.TrackingID}}</th>
+                <td>{{order.CustomerName}}</td>
+                <td>PKR {{order.Total}}</td>
+                <td>{{order.orderDate}}</td>
+                <td><span class="badge badge-success w-90 py-3" *ngIf="order.orderStatus=='Received'">{{order.orderStatus}}</span>
+                <span class="badge badge-danger w-90 py-3" *ngIf="order.orderStatus=='Pending'" >{{order.orderStatus}}</span>
+                <span class="badge badge-info w-90 py-3" *ngIf="order.orderStatus=='On the way'" >{{order.orderStatus}}</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <button routerLink="/admin/orders" type="button" class="btn btn-danger ml-2">View All</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

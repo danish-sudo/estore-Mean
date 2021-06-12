@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+
+<div class="container-contact100" style="margin-left: 10em;margin-top: 3em">
+  <div class="wrap-contact100">
+    <form class="contact100-form validate-form form-group" [formGroup]="angForm" novalidate>
+				<span class="contact100-form-title">
+					Add Product
+				</span>
+
+      <div *ngIf="angForm.controls['productName'].invalid && (angForm.controls['productName'].dirty || angForm.controls['productName'].touched )" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productName'].errors.required">
+          Product Title is required.
+        </div>
+      </div>
+      <div class="wrap-input100 validate-input bg1">
+        <span class="label-input100">Product Title *</span>
+        <input class="input100 form-control" type="text" formControlName="productName" #productName placeholder="Enter Title/Name">
+      </div>
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+        <span class="label-input100">Product Code *</span>
+        <input class="input100 form-control"  formControlName="Code" #Code type="number"  placeholder="Enter Product Code ">
+      </div>
+      <div *ngIf="angForm.controls['Code'].invalid && (angForm.controls['Code'].dirty || angForm.controls['Code'].touched )" class="alert alert-danger">
+        <div *ngIf="angForm.controls['Code'].errors.required">
+          Product Code is required.
+        </div>
+      </div>
+
+      <div class="wrap-input100 bg1 rs1-wrap-input100">
+        <span class="label-input100">Product Manufacture *</span>
+        <input class="input100 form-control" type="text"  placeholder="Enter Manufacture"formControlName="productManu" #productManu/>
+      </div>
+      <div *ngIf="angForm.controls['productManu'].invalid && (angForm.controls['productManu'].dirty || angForm.controls['productManu'].touched )" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productManu'].errors.required">
+          Product Manufacture is required.
+        </div>
+      </div>
+
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
+        <span class="label-input100">Product Price in PKR *</span>
+        <input class="input100 form-control" type="number" placeholder="Enter Price "formControlName="productPrice"  #productPrice/>
+      </div>
+      <div *ngIf="angForm.controls['productPrice'].invalid && (angForm.controls['productPrice'].dirty || angForm.controls['productPrice'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productPrice'].errors.required">
+          Price is required.
+        </div>
+      </div>
+
+      <div class="wrap-input100 bg1 rs1-wrap-input100">
+        <span class="label-input100">Product Quantity</span>
+        <input class="input100 form-control" type="number" placeholder="Enter Quantity"formControlName="productQuantity"  #productQuantity/>
+      </div>
+      <div *ngIf="angForm.controls['productQuantity'].invalid && (angForm.controls['productQuantity'].dirty || angForm.controls['productQuantity'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productQuantity'].errors.required">
+          Quantity is required.
+        </div>
+      </div>
+      <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Please Type Your Message">
+        <span class="label-input100">Describe The Product*</span>
+        <textarea class="input100 form-control" formControlName="productDis" #productDis
+                  placeholder="Product Description here..."></textarea>
+      </div>
+      <div *ngIf="angForm.controls['productDis'].invalid && (angForm.controls['productDis'].dirty || angForm.controls['productDis'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productDis'].errors.required">
+          Product Description is required.
+        </div>
+      </div>
+      <div class="container py-5">
+        <!-- For demo purpose -->
+        <div class="row text-center text-white mb-5 py-4">
+          <div class="col-lg-9 mx-auto">
+            <h1 class="display-4">Bootstrap 4 multiselect dropdown</h1>
+            <p class="lead mb-0">Using <a href="https://developer.snapappointments.com/bootstrap-select/" class=" text-white">
+              <u>bootstrap select</u></a>, create a styled bootstrap 4 multiselect dropdown menu.
+            </p>
+            <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic">
+              <u>Bootstrapious</u></a>
+            </p>
+          </div>
+        </div><!-- End -->
+
+        <div class="row">
+          <div class="col-lg-6 mx-auto">
+            <label class="text-white mb-3 lead">Where do you live?</label>
+            <!-- Multiselect dropdown -->
+            <select multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100">
+              <option>United Kingdom</option>
+              <option>United States</option>
+              <option>France</option>
+              <option>Germany</option>
+              <option>Italy</option>
+            </select><!-- End -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="wrap-input100 input100-select bg1">
+        <span class="label-input100">Product Category *(Press CTRL to select Multiple)</span>
+        <div>
+        <select formControlName="productCat" #productCat class="form-control" style="width: 15em"  >
+          <optgroup label="Women">
+            <option>Women</option>
+            <option>Women Arm wear‎</option>
+            <option>Women Ready Made</option>
+            <option>Women Foot Wears</option>
+            <option>Women Tops</option>
+            <option>Women T-Shirts</option>
+            <option>Women Kamiz</option>
+            <option>Women Dress</option>
+            <option>Women Jacket</option>
+            <option>Women Skirt</option>
+            <option>Women Trousers</option>
+            <option>Women FootWear</option>
+          </optgroup>
+          <optgroup label="kids">
+            <option>Kids</option>
+            <option>Kids Jeans</option>
+            <option>Kids Jackets</option>
+            <option>Kids Shirts</option>
+            <option>Kids Trousers</option>
+            <option>Kids FootWear</option>
+          </optgroup>
+          <optgroup label="Men">
+            <option>Men</option>
+            <option>Men T-Shirts</option>
+            <option>Men Shorts & Pants</option>
+            <option>Men Ties & Bow Ties</option>
+            <option>Men Coats & Jackets</option>
+            <option>Men Belts</option>
+            <option>Men FootWear</option>
+            <option>Men Glasses</option>
+            <option>Men Sweater & Vest</option>
+          </optgroup>
+
+        </select>
+        </div>
+      </div>
+      <div *ngIf="angForm.controls['productCat'].invalid && (angForm.controls['productCat'].dirty || angForm.controls['productCat'].touched )" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productCat'].errors.required">
+          Product Category is required.
+        </div>
+      </div>
+      <div class="wrap-input100 input100-select bg1">
+        <span class="label-input100">Product Size *(Press CTRL to select Multiple)</span>
+        <div>
+          <select class="form-control" formControlName="productSize" #productSize style="width: 15em"  >
+            <optgroup label="Sizes">
+              <option selected>Select</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+              <option>XXL</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="angForm.controls['productSize'].invalid && (angForm.controls['productSize'].dirty || angForm.controls['productSize'].touched )" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productSize'].errors.required">
+          Product Size is required.
+        </div>
+      </div>
+      <div class="wrap-input100 input100-select bg1">
+        <span class="label-input100">Product Color *(Press CTRL to select Multiple)</span>
+        <div>
+          <select class="form-control" formControlName="productColor" #productColor style="width: 15em" >
+            <optgroup label="Sizes">
+              <option selected>Select</option>
+              <option>Blue</option>
+              <option>Red</option>
+              <option>Black</option>
+              <option>White</option>
+              <option>Yellow</option>
+              <option>Green</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="angForm.controls['productColor'].invalid && (angForm.controls['productColor'].dirty || angForm.controls['productColor'].touched )" class="alert alert-danger">
+        <div *ngIf="angForm.controls['productColor'].errors.required">
+          Product Colors is required.
+        </div>
+      </div>
+      <div class="wrap-input100 input100-select bg1">
+        <div class="wrap-contact100-form-radio">
+          <span class="label-input100">Select Image *</span>
+          <div class="form-group">
+            <input (change)="selectImage($event)" type="file" class="form-control-file" formControlName="productImage" #productImage >
+          </div>
+          <div *ngIf="angForm.controls['productImage'].invalid && (angForm.controls['productImage'].dirty || angForm.controls['productImage'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['productImage'].errors.required">
+              Product Image is required.
+            </div>
+          </div>
+        </div>
+        <div class="wrap-contact100-form-radio">
+          <span class="label-input100">Select Second Image(Optional)</span>
+          <div class="form-group">
+            <input (change)="selectImage2($event)" #productImage2 type="file" class="form-control-file" >
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container-contact100-form-btn">
+        <button (click)="addProduct(Code.value,productName.value,productCat.value, productDis.value,
+         productPrice.value,productQuantity.value,
+          productSize.value,productColor.value,productManu.value)"
+                class="contact100-form-btn">
+						<span>
+							Submit
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</body>
+</html>
+
