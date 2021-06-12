@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col">
+            <h4><b>Shopping Cart</b></h4>
+          </div>
+          <div class="col align-self-center text-right text-muted">{{myArray.length}} Items</div>
+        </div>
+      </div>
+
+      <div class="row" *ngFor="let product of myArray; let i=index">
+
+        <div class="row main align-items-center">
+          <div class="col-2"><img class="img-fluid" src="http://localhost/images/{{product.ImagePath}}" alt="{{product.ProductName}}"></div>
+          <div class="col">
+            <div class="row text-muted">#{{product.Code}}</div>
+            <div class="row">{{product.ProductName}}</div>
+          </div>
+          <div class="col"> <a type="button" (click)="minus(product._id,i)" >-</a><a class="border">{{product.ProductQuantity}}</a><a
+            type="button" (click)="plus(product._id,i)" >+</a> </div>
+          <div class="col">PKR {{product.ProductPrice}} <span role="button" (click)="deleteProduct(product._id,i)" class="close">&#10005;</span></div>
+        </div>
+
+      </div>
+      <div class="back-to-shop"><a routerLink="/products">Back to shop</a></div>
+    </div>
+    <div class="col-md-4 summary">
+      <div>
+        <h5><b>Shipping</b></h5>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col" style="padding-left:0;">Total Items</div>
+        <div class="col text-right">{{myArray.length}}</div>
+      </div>
+      <hr>
+      <form [formGroup]="orderForm" (ngSubmit)="checkOut(Phone.value, Address.value)">
+        <label>Your Info</label>
+          <input disabled placeholder="{{user.name}}">
+          <input  disabled placeholder="{{user.email}}">
+
+        <hr>
+        <label>Enter Shipping Info</label>
+        <label>
+          <div *ngIf="submitted && orderForm.controls.Phone.errors" class="text-danger">
+            <div *ngIf="orderForm.controls.Phone.errors.required">Phone Number is required</div>
+          </div>
+          <input type="number" formControlName="Phone" [ngClass]="{ 'is-invalid': submitted && orderForm.controls.Phone.errors }" placeholder="Receiver Phone" #Phone >
+        </label>
+        <label>
+          <div *ngIf="submitted && orderForm.controls.Address.errors" class="text-danger">
+            <div *ngIf="orderForm.controls.Address.errors.required">Address is required</div>
+          </div>
+          <input type="text" formControlName="Address" placeholder="Full Address" #Address [ngClass]="{ 'is-invalid': submitted && orderForm.controls.Phone.errors }">
+        </label>
+      </form>
+      <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+        <div class="col">TOTAL PRICE</div>
+        <div class="col text-right">PKR {{price}}</div>
+
+      </div> <button (click)="checkOut(Phone.value, Address.value)" class="btn">CHECKOUT </button>
+    </div>
+  </div>
+</div>

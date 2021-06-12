@@ -1,0 +1,45 @@
+<div class="container my-4" >
+  <a class="navbar-brand mr-4"
+     routerLink ="/" routerLinkActive="active"><strong>Shoplaza</strong></a>
+</div>
+<div class="wrapper fadeInDown" style="margin-top: 4em" >
+  <div id="formContent">
+    <h2 class="active"> Sign In </h2>
+    <h2 routerLink="/register" class="inactive underlineHover">Sign Up </h2>
+
+    <div class="fadeIn first">
+<img src="https://img.icons8.com/color/2x/user-male-circle.png">
+    </div>
+
+    <form [formGroup]="LoginForm" (ngSubmit)="onLogin(username.value,password.value)">
+
+      <input type="text" formControlName= "username"
+             [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+             #username
+             class="fadeIn second form-control"
+             placeholder="username" >
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">UserName is required</div>
+        <div *ngIf="f.username.errors.minlength">UserName must be at least 4 characters</div>
+      </div>
+      <input type="password"  formControlName="password"
+             [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+             class="fadeIn third form-control"
+             placeholder="password"
+            #password>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+      <div class="btn-danger"  *ngIf="error==true">Invalid Credentials</div>
+
+
+      <input type="submit" class="fadeIn fourth" value="Log In">
+
+    </form>
+
+  </div>
+</div>
+
+
+

@@ -1,0 +1,58 @@
+<br/>
+<h1 class="text-center">{{cat}}</h1>
+<div class="md-form active-purple active-purple-2 mb-3">
+  <input class="form-control" type="text" placeholder="Search" [(ngModel)]="term" aria-label="Search">
+</div>
+<div class="row">
+  <div *ngFor="let product of Prod  |filter:term" class="col-md-3 p-1 mt-4 col-sm-6 "  >
+    <div class="product-grid3">
+      <div class="product-image3">
+        <a [routerLink]="['/product', product._id]" >
+          <img class="pic-1" src="http://localhost/images/{{product.ImagePath}}" alt="{{product.ProductName}}">
+          <img class="pic-2" src="http://localhost/images/{{product.ImagePath2}}" alt="{{product.ProductName}}">
+        </a>
+        <ul *ngIf="product.ProductQuantity>0" class="social">
+          <li><a [routerLink]="['/product', product._id]" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+          <li><a data-toggle="modal" data-target="#modalPush" data-tip="Add to Cart"><i role="button" (click)="addToCart(product)"  class=" fa fa-shopping-cart"></i></a></li>
+        </ul>
+        <ul class="social" *ngIf="product.ProductQuantity<=0">
+          <li class="btn-danger" >Out Of Stock</li>
+        </ul>
+      </div>
+      <div class="product-content">
+        <h3 class="title"><a [routerLink]="['/product', product._id]">{{product.ProductName}}</a></h3>
+        <div class="price">PKR {{product.ProductPrice}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal: modalPush-->
+<div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+      <!--Header-->
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">Item Added To Cart</p>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+        <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+
+        <p>Thank You So Much!!</p>
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a routerLink="/cart" data-dismiss="modal" class="btn btn-info">Checkout</a>
+        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Continue Shopping</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: modalPush-->

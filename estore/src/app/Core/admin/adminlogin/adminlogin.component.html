@@ -1,0 +1,26 @@
+<body>
+ <div class="container my-4" >
+      <a class="navbar-brand mr-4"
+      routerLink ="/" routerLinkActive="active"><strong>Shoplaza</strong></a>
+  </div>
+  <div class="container" >
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-6 col-xl-5 mx-auto">
+            <div class="card px-5 pt-4 d-flex justify-content-center">
+                <form (submit) = "onLogin()" class="mydetails">
+                    <input [(ngModel)]= "username" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="UserName" >
+
+                  <input [(ngModel)]= "password" [ngModelOptions]="{standalone: true}"  type="password" class="form-control mt-2" placeholder="Password">
+                  <hr/>
+                      <button type="submit" class="btn btn-primary btn-block"><span>Sign In</span></button>
+                  <hr/>
+                </form>
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+  </body>
+
+

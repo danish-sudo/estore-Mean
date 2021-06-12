@@ -1,0 +1,81 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-4 pb-5">
+      <!-- Account Sidebar-->
+      <div class="author-card pb-3">
+        <div class="author-card-cover" style="background-image: url(https://demo.createx.studio/createx-html/img/widgets/author/cover.jpg);">
+          </div>
+        <div class="author-card-profile mt-0">
+          <div  class="author-card-avatar"><img *ngIf="hasImage" src="{{url}}" alt="{{localUser.name}}">
+            <img *ngIf="!hasImage" src="https://img.icons8.com/color/2x/user-male-circle.png">
+          </div>
+          <div class="author-card-details">
+            <h5 class="author-card-name text-lg">{{localUser.name}}</h5><span class="author-card-position"></span>
+          </div>
+        </div>
+        <form enctype="multipart/form-data">
+          <div class="upload-button">
+        <span>
+          Update avatar
+        </span>
+            <div class="image-selector">
+              <input type="file" name="avatar" (change)="selectImage($event)" />
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+    <!-- Profile Settings-->
+    <div class="col-lg-8 pb-5">
+      <form class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="account-fn">Full Name</label>
+            <input class="form-control" type="text" id="account-fn" value="{{localUser.name}}" required="" #name>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="account-ln">User Name</label>
+            <input class="form-control" type="text" id="account-ln" value="{{localUser.username}}" disabled="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="account-email">E-mail Address</label>
+            <input class="form-control" type="email" id="account-email" value="{{localUser.email}}" disabled="">
+          </div>
+        </div>
+
+        <div class="col-12">
+          <hr class="mt-2 mb-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <button routerLink="/products" class="btn btn-style-1 btn-primary" (click)="onSubmit(name.value)" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<div style="align-content: center">
+  <h3 style="align-content: center">Your Orders</h3>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Tracking ID</th>
+      <th scope="col">Status</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of o">
+      <td><a [routerLink]="['/orderTrack', order.TrackingID]">{{order.TrackingID}}</a></td>
+      <td>{{order.orderStatus}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

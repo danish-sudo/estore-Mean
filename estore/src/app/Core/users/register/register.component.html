@@ -1,0 +1,77 @@
+<div class="container my-4" >
+  <a class="navbar-brand mr-4"
+     routerLink ="/" routerLinkActive="active"><strong>Shoplaza</strong></a>
+</div>
+<div class="wrapper fadeInDown" style="margin-top: 2.5em" >
+  <div id="formContent">
+    <h2 routerLink="/login" class="inactive underlineHover"> Sign In </h2>
+    <h2  class="active">Sign Up </h2>
+
+    <div class="fadeIn first">
+      <img src="https://img.icons8.com/color/2x/user-male-circle.png">
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(name.value, email.value,username.value,password.value)">
+      <input formControlName="name"
+             class="fadeIn second form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+             placeholder="Enter Your Name"
+             #name
+             type="text" >
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+      </div>
+      <input formControlName="email"
+             class="fadeIn second form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+             placeholder="Enter a Valid Email"
+             #email
+             type="text" >
+
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
+      <div class="btn-danger" *ngIf="emailexists==true ">{{error}}</div>
+
+      <input formControlName="username"
+             class="fadeIn second form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.username.errors && useralready }"
+             #username
+             placeholder="Choose a username" type="text">
+
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">UserName is required</div>
+        <div *ngIf="f.username.errors.minlength">UserName must be at least 4 characters</div>
+      </div>
+      <div class="btn-danger" *ngIf="useralready==true ">{{erroru}}</div>
+
+      <input type="password"  formControlName= "password"
+             [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+             class="fadeIn third form-control"
+             placeholder="Create strong password"
+             #password
+      >
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+      <input type="submit" class="fadeIn fourth" value="Join">
+
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

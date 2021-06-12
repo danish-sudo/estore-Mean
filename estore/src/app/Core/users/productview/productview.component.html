@@ -1,0 +1,85 @@
+
+
+<div class="container">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-4">
+
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><img src="http://localhost/images/{{product.ImagePath}}" /></div>
+            <div class="tab-pane" id="pic-2"><img src="http://localhost/images/{{product.ImagePath2}}" /></div>
+
+          </div>
+
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title">{{[product.ProductName]}}</h3>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+            </div>
+            <span class="review-no">41 reviews</span>
+          </div>
+          <p class="product-description">{{product.ProductDis}}</p>
+          <h4 class="price">current price: <span>PKR {{product.ProductPrice}}</span></h4>
+          <p class="vote"><strong>{{product.ProductPrice%100}}%</strong> of buyers enjoyed this product! <strong></strong></p>
+
+          <h5 class="sizes">Manufacture:
+            <span >{{product.Manufacturer}}</span>
+          </h5>
+          <h5 class="sizes">sizes:
+            <span class="size" data-toggle="tooltip" title="small">s</span>
+            <span class="size" data-toggle="tooltip" title="medium">m</span>
+            <span class="size" data-toggle="tooltip" title="large">l</span>
+            <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+          </h5>
+          <h5 class="colors">colors:
+            <span class="color red"></span>
+            <span class="color green"></span>
+            <span class="color blue"></span>
+          </h5>
+          <div class="action">
+            <button *ngIf="product.ProductQuantity>0" data-toggle="modal" data-target="#modalPush" class="add-to-cart btn btn-info" (click)="addToCart(product)" type="button">add to cart</button>
+            <button *ngIf="product.ProductQuantity<=0" class="btn-info" disabled type="button">Out Of Stock</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal: modalPush-->
+<div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+      <!--Header-->
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">Item Added To Cart</p>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+        <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+
+        <p>Thank You So Much!!</p>
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a routerLink="/cart" data-dismiss="modal" class="btn btn-info">Checkout</a>
+        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Continue Shopping</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: modalPush-->

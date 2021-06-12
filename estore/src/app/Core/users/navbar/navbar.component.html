@@ -1,0 +1,98 @@
+
+<body *ngIf="ts.visible">
+<nav class="navbar navbar-expand navbar-light bg-white topbar fixed-top" >
+<div class="d-flex w-50 order-0">
+    <a class="navbar-brand m-auto" routerLink="/">Shoplaza</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav ml-auto">
+    </ul>
+  </div>
+
+  <!-- Topbar Search -->
+  <form class="search">
+    <div class="search__wrapper">
+      <input type="text" name="" placeholder="Search for..." class="search__field">
+      <button type="submit" class="fa fa-search search__icon"></button>
+    </div>
+  </form>
+  <ul class="navbar-nav ml-auto">
+    <li  class="nav-item dropdown no-arrow mx-1">
+      <a  class="nav-link dropdown-toggle"  role="button" id="messagesDropdown"
+         data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false"> <i class="fa fa-shopping-cart fa-fw"></i>
+      <span class="badge badge-danger badge-counter" *ngIf="cart!=0" >{{cart}}</span> </a>
+      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+        <h6 class="dropdown-header"> Cart </h6> <a class="dropdown-item d-flex align-items-center">
+        <div class="dropdown-list-image mr-3"> <i class="fa fa-shopping-cart"></i>
+          <div class="status-indicator bg-success"></div>
+        <div class="font-weight-bold">
+          <div class="text-truncate">Total Items</div>
+          <div class="small text-gray-500">{{cart}}</div>
+        </div>
+        </div>
+        <div class="dropdown-list-image mr-auto"> <i class="fa fa-money"></i>
+          <div class="status-indicator bg-success"></div>
+
+        <div class="font-weight-bold">
+          <div class="text-truncate">Total Price</div>
+          <div class="small text-gray-500">PKR {{price}}</div>
+        </div>
+        </div>
+      </a> <a *ngIf="isUserExists()" class="dropdown-item text-center small text-gray-500" routerLink="/cart">CheckOut</a>
+        <a *ngIf="!isUserExists()" class="dropdown-item text-center small text-gray-500" routerLink="/login">Login in To checkOut</a>
+
+      </div>
+
+
+
+    </li>
+    <div class="topbar-divider d-none d-sm-block"></div>
+    <li class="nav-item">
+      <a *ngIf="!isUserExists()" class="nav-link" routerLink="/login">Sign In</a>
+    </li>
+    <li *ngIf="isUserExists()" class="nav-item dropdown no-arrow"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
+      <img *ngIf="hasImage" class="img-profile rounded-circle"
+      src="{{img}}">
+      <img *ngIf="!hasImage" class="img-profile rounded-circle"
+           src="https://img.icons8.com/color/2x/user-male-circle.png">
+    </a>
+
+      <div  class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <a class="dropdown-item" [routerLink]="['/userProfile', user.id]">
+        <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+      </a>
+        <div class="dropdown-divider"></div> <a class="dropdown-item" (click)="onLogout()"> <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i> Logout </a>
+      </div>
+    </li>
+  </ul>
+
+</nav>
+<br/>
+<br/>
+<div class="mainmenu">
+  <ul id="navigation">
+    <li><a routerLink="/">Home</a></li>
+
+    <li><a routerLink="/about">About</a></li>
+    <li><a [routerLink]="['/category', 'All Products']">Shop </a>
+      <ul>
+        <li><a [routerLink]="['/category', 'Footwear']">Footwear</a></li>
+        <li><a [routerLink]="['/category', 'Tops']">Tops</a></li>
+        <li><a [routerLink]="['/category', 'Bottoms']">Bottoms</a></li>
+        <li><a [routerLink]="['/category', 'Jackets']">Jackets</a></li>
+      </ul>
+    </li>
+
+    <li><a [routerLink]="['/category', 'Men']">Men</a></li>
+    <li><a [routerLink]="['/category', 'Women']">Women </a>
+
+    </li>
+    <li><a [routerLink]="['/category', 'Young']">Young</a></li>
+    <li><a [routerLink]="['/category', 'Kids']">Kids</a></li>
+  </ul>
+</div>
+</body>
